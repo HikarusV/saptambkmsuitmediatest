@@ -1,6 +1,6 @@
 # suitmediatest
 
-A new Flutter project.
+Project by Sapta Pradan student at Gunadarma University
 
 ## Getting Started
 
