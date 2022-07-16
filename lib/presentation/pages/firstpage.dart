@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suitmediatest/presentation/pages/secondpage.dart';
 import 'package:suitmediatest/presentation/widgets/error_handler.dart';
 import 'package:suitmediatest/presentation/widgets/full_button.dart';
 import 'package:suitmediatest/presentation/widgets/text_input.dart';
@@ -78,7 +79,7 @@ class FirstPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Scaffold(),
+                            builder: (context) => const SecondPage(),
                           ),
                         );
                       } else {

@@ -18,3 +18,21 @@ var textButtonStyle = GoogleFonts.poppins(
   color: const Color(0xFFFFFFFF),
   fontWeight: FontWeight.w500,
 );
+
+var textWelcomeStyle = GoogleFonts.poppins(
+  fontSize: 12,
+  color: const Color(0xFF04021D),
+  fontWeight: FontWeight.w400,
+);
+
+var textTitleStyle = GoogleFonts.poppins(
+  fontSize: 18,
+  color: const Color(0xFF04021D),
+  fontWeight: FontWeight.w600,
+);
+
+var textSelectedBoldStyle = GoogleFonts.poppins(
+  fontSize: 24,
+  color: const Color(0xFF04021D),
+  fontWeight: FontWeight.w600,
+);
