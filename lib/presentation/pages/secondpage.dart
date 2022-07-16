@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:suitmediatest/common/style.dart';
 import 'package:suitmediatest/presentation/pages/firstpage.dart';
+import 'package:suitmediatest/presentation/pages/thirdpage.dart';
+import 'package:suitmediatest/presentation/provider/second_provider.dart';
 import 'package:suitmediatest/presentation/widgets/custom_scaffold.dart';
 import 'package:suitmediatest/presentation/widgets/full_button.dart';
 
@@ -27,7 +30,7 @@ class SecondPage extends StatelessWidget {
           ),
           Center(
             child: Text(
-              "Selected User Name",
+              context.watch<SecondProvider>().name ?? "Selected User Name",
               style: textSelectedBoldStyle,
             ),
           ),
@@ -38,11 +41,13 @@ class SecondPage extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const CustomScaffold(
-                    title: "Third Screen",
-                  ),
+                  builder: (context) => const ThirdScreen(),
                 ),
-              ),
+              ).then((value) {
+                if (value != null) {
+                  context.read<SecondProvider>().changeName(value);
+                }
+              }),
             ),
           )
         ],

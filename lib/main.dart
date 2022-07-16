@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:suitmediatest/presentation/pages/firstpage.dart';
+import 'package:suitmediatest/presentation/provider/second_provider.dart';
+import 'package:suitmediatest/presentation/provider/third_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<ThirdProvider>(
+        create: (context) => ThirdProvider(),
+      ),
+      ChangeNotifierProvider<SecondProvider>(
+        create: (context) => SecondProvider(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

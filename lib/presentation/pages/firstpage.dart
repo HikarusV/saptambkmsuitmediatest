@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:suitmediatest/common/style.dart';
 import 'package:suitmediatest/presentation/pages/secondpage.dart';
+import 'package:suitmediatest/presentation/provider/second_provider.dart';
 import 'package:suitmediatest/presentation/widgets/error_handler.dart';
 import 'package:suitmediatest/presentation/widgets/full_button.dart';
 import 'package:suitmediatest/presentation/widgets/text_input.dart';
@@ -57,14 +60,27 @@ class FirstPage extends StatelessWidget {
                     onPressed: () {
                       String text = palindrome.text;
                       if (text.isNotEmpty) {
-                        if (text == text.split('').reversed.join()) {
-                          print("Sama");
-                        }
+                        String message = text == text.split('').reversed.join()
+                            ? "is Palindrome"
+                            : "not palindrome";
+                        showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 40, vertical: 40),
+                              child: Text(
+                                message,
+                                style: textTitleStyle,
+                              ),
+                            ),
+                          ),
+                        );
                       } else {
                         snackbarError(
                           context,
                           duration: 2,
-                          message: "Kolom Palindrome tidak boleh kosong",
+                          message: "Column Palindrome is required",
                         );
                       }
                     },
@@ -81,12 +97,13 @@ class FirstPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => const SecondPage(),
                           ),
-                        );
+                        ).whenComplete(
+                            () => context.read<SecondProvider>().name = null);
                       } else {
                         snackbarError(
                           context,
                           duration: 2,
-                          message: "Kolom nama tidak boleh kosong",
+                          message: "Column name is required",
                         );
                       }
                     },
